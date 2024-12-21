@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التاريخ الهجري</title>
+    <style>
+        body {
+            background-color: white; /* يمكنك تغيير لون الخلفية هنا */
+            color: black; /* لون النص الافتراضي */
+        }
+        body.dark-mode {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>التاريخ الهجري اليوم</h1>
+    <p id="hijri-date"></p>
+
+    <script>
+        function getHijriDate() {
+            const today = new Date();
+            const hijri = new Intl.DateTimeFormat("ar-TN-u-ca-islamic-nu-arab", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+            }).format(today);
+            document.getElementById('hijri-date').textContent = hijri;
+        }
+
+        // تغيير لون النص بناءً على لون الخلفية
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // استدعاء الدالة للحصول على التاريخ الهجري
+        getHijriDate();
+    </script>
+    <button onclick="toggleDarkMode()">تبديل الوضع الليلي</button>
+</body>
+</html>
